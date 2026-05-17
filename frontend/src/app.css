@@ -75,6 +75,14 @@ body {
   font-family: var(--font-mincho);
 }
 
+select {
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: var(--color-vermillion);
+}
+
 /* Buttons */
 button {
   font-family: var(--font-sans);

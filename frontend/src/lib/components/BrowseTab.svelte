@@ -208,6 +208,11 @@
     text-align: center;
     padding: 3rem 1rem;
     color: var(--color-ink-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
   }
   .empty-kanji {
     font-size: 3rem;
