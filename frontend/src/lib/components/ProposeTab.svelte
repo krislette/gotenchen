@@ -7,6 +7,7 @@
     entries,
     txPending,
   } from "../stores/chainStore";
+  import { showToast } from "../stores/toast";
 
   const DONOR_LANGUAGES = [
     "English",
@@ -55,9 +56,6 @@
     category: "",
   };
 
-  let success = false;
-  let error = "";
-
   $: isValid =
     form.katakana.trim() &&
     form.donorLanguage &&
@@ -67,12 +65,10 @@
   async function handleSubmit() {
     if (!$signer || !$provider) return;
     txPending.set(true);
-    success = false;
-    error = "";
 
     try {
       await proposeEntry($signer, form);
-      success = true;
+      showToast("済 提案完了！ Entry submitted successfully.", "success");
       // Reset form
       form = {
         katakana: "",
@@ -85,7 +81,7 @@
       // Refresh entries
       entries.set(await fetchAllEntries($provider));
     } catch (e: any) {
-      error = e?.reason ?? e?.message ?? "Transaction failed";
+      showToast(e?.reason ?? e?.message ?? "Transaction failed", "error");
     } finally {
       txPending.set(false);
     }
@@ -189,15 +185,6 @@
         </select>
       </div>
 
-      {#if success}
-        <div class="alert alert-success">
-          提案完了！ Entry submitted successfully. It is now open for voting.
-        </div>
-      {/if}
-      {#if error}
-        <div class="alert alert-error">{error}</div>
-      {/if}
-
       <div class="form-actions">
         <p class="form-note">
           <span style="color: var(--color-vermillion-h)">*</span> Required. Your
@@ -264,23 +251,6 @@
     .form-row {
       grid-template-columns: 1fr;
     }
-  }
-
-  .alert {
-    padding: 0.65rem 1rem;
-    border-radius: var(--radius);
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
-  }
-  .alert-success {
-    background: #e6f4ee;
-    color: var(--color-ratified);
-    border: 1px solid #b2dfcc;
-  }
-  .alert-error {
-    background: #fdeaea;
-    color: var(--color-rejected);
-    border: 1px solid #f5b8b8;
   }
 
   .form-actions {

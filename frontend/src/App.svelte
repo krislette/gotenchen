@@ -17,6 +17,7 @@
   import BrowseTab from "./lib/components/BrowseTab.svelte";
   import ProposeTab from "./lib/components/ProposeTab.svelte";
   import VoteTab from "./lib/components/VoteTab.svelte";
+  import Toaster from "./lib/components/Toaster.svelte";
 
   type TabId = "browse" | "propose" | "vote";
 
@@ -135,6 +136,7 @@
     <span class="footer-kanji mincho">語典チェーン</span>
     <span class="footer-note"> Built for COSC 402</span>
   </div>
+  <Toaster />
 </footer>
 
 <style>

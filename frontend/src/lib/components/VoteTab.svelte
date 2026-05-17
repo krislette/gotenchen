@@ -9,13 +9,11 @@
     txPending,
   } from "../stores/chainStore";
   import { castVote, checkHasVoted, fetchAllEntries } from "../contract";
-  import { onMount } from "svelte";
+  import { showToast } from "../stores/toast";
 
   // Track which entries the current user has voted on
   let votedSet = new Set<number>();
   let loadingVotes = false;
-  let txError = "";
-  let txSuccess = "";
 
   $: pending = $entries.filter((e) => e.status === 0);
 
@@ -37,15 +35,14 @@
   async function handleVote(entryId: number, upvote: boolean) {
     if (!$signer || !$provider) return;
     txPending.set(true);
-    txError = "";
-    txSuccess = "";
+
     try {
       await castVote($signer, entryId, upvote);
-      txSuccess = `投票完了！ Vote recorded for entry #${entryId}.`;
+      showToast(`投票完了！ Vote recorded for entry #${entryId}.`, "success");
       entries.set(await fetchAllEntries($provider));
       await loadVotedSet();
     } catch (e: any) {
-      txError = e?.reason ?? e?.message ?? "Transaction failed";
+      showToast(e?.reason ?? e?.message ?? "Transaction failed", "error");
     } finally {
       txPending.set(false);
     }
@@ -96,13 +93,6 @@
       <p>No entries pending review right now.</p>
     </div>
   {:else}
-    {#if txSuccess}
-      <div class="alert alert-success">{txSuccess}</div>
-    {/if}
-    {#if txError}
-      <div class="alert alert-error">{txError}</div>
-    {/if}
-
     <div class="vote-list">
       {#each pending as entry (entry.id)}
         {@const alreadyVoted = votedSet.has(entry.id)}
@@ -237,23 +227,6 @@
     to {
       transform: rotate(360deg);
     }
-  }
-
-  .alert {
-    padding: 0.65rem 1rem;
-    border-radius: var(--radius);
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
-  }
-  .alert-success {
-    background: #e6f4ee;
-    color: var(--color-ratified);
-    border: 1px solid #b2dfcc;
-  }
-  .alert-error {
-    background: #fdeaea;
-    color: var(--color-rejected);
-    border: 1px solid #f5b8b8;
   }
 
   .vote-list {
