@@ -29,9 +29,9 @@ This project was built for COSC 402: Current Trends and Topics in Computing (Ind
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
 4. [Setup](#setup)
-5. [Smart Contract](#smart-contract)
-6. [Project Structure](#project-structure)
-7. [License](#license)
+5. [Project Structure](#project-structure)
+6. [Smart Contract](#smart-contract)
+7. [Website Snapshots](#website-snapshots)
 
 ## Features
 
@@ -153,5 +153,13 @@ goten-chain/
 | `hasVoted(entryId, address)`                                                   | Returns whether a wallet has voted on an entry                                                     |
 
 **Constants**: `RATIFY_THRESHOLD = 3`, `REJECT_THRESHOLD = 3`
+
+## Website Snapshots
+
+### Browse Tab (閲覧)
+
+### Propose Tab (提案)
+
+### Vote Tab (投票)
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
