@@ -1,0 +1,209 @@
+/* Design Tokens */
+:root {
+  /* Washi paper tones */
+  --color-washi: #f5ede0;
+  --color-washi-mid: #ede0cc;
+  --color-washi-dark: #d9c8b0;
+
+  /* Ink */
+  --color-ink: #3f3022;
+  --color-ink-light: #4a3728;
+  --color-ink-muted: #7a6555;
+
+  /* Accents */
+  --color-vermillion: #b5322a;
+  --color-vermillion-h: #d44038;
+  --color-accent: #e6b84a;
+
+  /* Status palette (Japanese pigments) */
+  --color-ratified: #2d6a4f; /* 常磐 tokoiwa — deep evergreen */
+  --color-pending: #9b7b1a; /* 山吹 yamabuki — gold */
+  --color-rejected: #7a1f1f; /* 茜 akane — deep crimson */
+
+  /* Category chips */
+  --color-tech: #2b4c7e;
+  --color-food: #7b4f2e;
+  --color-fashion: #6b3fa0;
+  --color-sports: #1a6b3c;
+  --color-music: #8b3a62;
+  --color-medicine: #2e6b6b;
+  --color-everyday: #4a4a2e;
+  --color-other: #4a3728;
+
+  /* Typography */
+  --font-mincho: "Shippori Mincho B1", "Noto Serif JP", serif;
+  --font-sans: "Noto Sans JP", sans-serif;
+
+  /* Spacing */
+  --radius: 6px;
+  --radius-lg: 12px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-washi);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Typography helpers */
+.mincho {
+  font-family: var(--font-mincho);
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background 0.15s, opacity 0.15s, transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--color-vermillion);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-vermillion-h);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink-light);
+  border: 1.5px solid var(--color-washi-dark);
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-washi-mid);
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border: 1px solid var(--color-washi-dark);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.4rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+}
+
+.badge-ratified {
+  background: #e6f4ee;
+  color: var(--color-ratified);
+}
+
+.badge-pending {
+  background: #fdf6e0;
+  color: var(--color-pending);
+}
+
+.badge-rejected {
+  background: #fdeaea;
+  color: var(--color-rejected);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  border: 1.5px solid var(--color-washi-dark);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  color: var(--color-ink);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-vermillion);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-ink-muted);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-washi-mid);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-washi-dark);
+  border-radius: 999px;
+}
