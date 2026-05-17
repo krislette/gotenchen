@@ -323,11 +323,14 @@
     margin: 0 auto;
     display: flex;
     padding: 0 1.5rem;
+    width: 100%;
   }
   .tab-btn {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 0.65rem 1.4rem 0.55rem;
     background: transparent;
     border-bottom: 3px solid transparent;
@@ -341,6 +344,7 @@
   }
   .tab-btn:hover {
     color: var(--color-ink);
+    background: var(--color-washi-mid-1);
   }
   .tab-btn.active {
     border-bottom-color: var(--color-vermillion);
