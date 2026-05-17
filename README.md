@@ -157,9 +157,12 @@ goten-chain/
 ## Website Snapshots
 
 ### Browse Tab (閲覧)
+<img width="1320" height="719" alt="localhost_5173_ (2)" src="https://github.com/user-attachments/assets/bddfbc07-21c0-498d-bfaa-554f621c430f" />
 
 ### Propose Tab (提案)
+<img width="1320" height="808" alt="localhost_5173_ (3)" src="https://github.com/user-attachments/assets/43535ed8-b1c4-4246-8b9a-27ec7d2e5cba" />
 
 ### Vote Tab (投票)
+<img width="1320" height="1165" alt="localhost_5173_ (1)" src="https://github.com/user-attachments/assets/274eb874-ff9e-4342-9e4a-3c1478dbf21c" />
 
 <p align="right"><a href="#readme-top">Back to top</a></p>
